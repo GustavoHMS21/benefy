@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+coverage.xml
+.env
+.idea/
+.vscode/
+
+# Dados gerados por tools/seed/gerar_seed.py
+database/seed/

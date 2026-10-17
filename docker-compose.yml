@@ -1,0 +1,36 @@
+name: benefy
+
+services:
+  postgres:
+    image: postgres:16.4
+    container_name: benefy-postgres
+    environment:
+      POSTGRES_DB: benefy
+      POSTGRES_USER: benefy
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-benefy_dev}
+      TZ: America/Sao_Paulo
+      PGTZ: America/Sao_Paulo
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./database/init:/docker-entrypoint-initdb.d:ro
+      - ./database/seed:/seed:ro
+      - benefy-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U benefy -d benefy"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  adminer:
+    image: adminer:4.8.1
+    container_name: benefy-adminer
+    ports:
+      - "8081:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    depends_on:
+      - postgres
+
+volumes:
+  benefy-pgdata:
