@@ -4,8 +4,6 @@ Repositório central da **Benefy Tecnologia em Benefícios S.A.**, uma fintech f
 
 > A empresa, as pessoas, os números e os dados são fictícios. As regras de negócio são inspiradas no mercado brasileiro, mas simplificadas.
 
-Você é o novo **AI Engineer Júnior** do squad **Plataforma de IA**. Comece pelo [primeiro dia](docs/onboarding/primeiro-dia.md).
-
 ## Subir o ambiente
 
 Pré-requisitos: Python 3.12 e Docker Desktop rodando.
