@@ -1,23 +1,28 @@
 # Benefy
 
-Repositório central da **Benefy Tecnologia em Benefícios S.A.**, uma fintech fictícia de benefícios corporativos (vale-refeição, vale-alimentação e multibenefícios).
+Repositório central da **Benefy Tecnologia em Benefícios S.A.**: documentação institucional, padrões de engenharia, ambiente de homologação e código dos serviços.
 
-> A empresa, as pessoas, os números e os dados são fictícios. As regras de negócio são inspiradas no mercado brasileiro, mas simplificadas.
+A Benefy oferece às empresas um cartão único de benefícios corporativos. O RH distribui o saldo em carteiras (refeição, alimentação, mobilidade, saúde, cultura e saldo livre), e o colaborador usa o cartão ou o app em qualquer estabelecimento da rede Mastercard.
 
-Você é o novo **AI Engineer Júnior** do squad **Plataforma de IA**. Comece pelo [primeiro dia](docs/onboarding/primeiro-dia.md).
+## Ambiente de homologação
 
-## Subir o ambiente
-
-Pré-requisitos: Python 3.12 e Docker Desktop rodando.
+Pré-requisitos: Python 3.12 e Docker Desktop.
 
 ```powershell
 python tools/seed/gerar_seed.py
 docker compose up -d
 ```
 
-Banco em `postgresql://benefy:benefy_dev@localhost:5433/benefy`. Adminer em http://localhost:8081.
+| Recurso | Endereço |
+|---|---|
+| PostgreSQL | `postgresql://benefy:benefy_dev@localhost:5433/benefy` |
+| Adminer | http://localhost:8081 |
 
-## A empresa
+As credenciais acima valem apenas para o ambiente local. Detalhes de schemas, tabelas e consultas em [Banco de dados](docs/dados/banco-de-dados.md).
+
+A base de homologação usa dados sintéticos, mas segue a mesma classificação da produção: CPF, nome e telefone são dados **Restritos** e não saem do ambiente. Ver [Segurança e compliance](docs/empresa/06-seguranca-e-compliance.md).
+
+## Documentação
 
 | Área | Documento |
 |---|---|
@@ -30,22 +35,35 @@ Banco em `postgresql://benefy:benefy_dev@localhost:5433/benefy`. Adminer em http
 | Financeiro | [Visão financeira](docs/financeiro/visao-financeira.md) |
 | Atendimento | [Operação de atendimento](docs/atendimento/operacao-de-atendimento.md) |
 | Dados | [Banco de dados](docs/dados/banco-de-dados.md) |
+| Onboarding | [Primeiro dia](docs/onboarding/primeiro-dia.md) |
 | Termos | [Glossário](docs/empresa/07-glossario.md) |
 
 ## Estrutura
 
 ```
 benefy/
-├── docs/               documentação da empresa, por área
+├── docs/               documentação institucional, por área
 ├── database/
-│   ├── init/           schema e carga do Postgres (rodam ao subir o container)
-│   └── seed/           CSVs gerados (fora do git)
+│   ├── init/           schema, carga e índices do Postgres (executados na criação do container)
+│   └── seed/           CSVs gerados localmente (não versionados)
 ├── tools/seed/         gerador dos dados de homologação
-├── services/           código dos serviços (criado conforme as demandas)
-└── docker-compose.yml  Postgres + Adminer
+├── services/           um diretório por serviço, com README, testes e pipeline
+└── docker-compose.yml  Postgres e Adminer
 ```
 
-## No banco hoje
+## Como contribuir
+
+O fluxo completo está em [Padrões de engenharia](docs/empresa/05-padroes-de-engenharia.md). Em resumo:
+
+- **GitFlow:** `main` reflete produção e `develop` é a branch de integração. O trabalho sai de `feature/BNF-123-descricao-curta`. Não há push direto em `main` ou `develop`.
+- **Commits:** Conventional Commits com o ID da história, por exemplo `feat(saldo): debita carteira com fallback para saldo livre [BNF-104]`.
+- **Pull requests:** pelo menos uma aprovação humana. Agentes de IA podem abrir PRs e comentar, mas nunca aprovam nem fazem merge.
+- **Quality gate:** cobertura de código novo de pelo menos 80%, nenhum bug ou vulnerabilidade nova e SAST (Semgrep e Bandit) sem achados de severidade alta ou crítica.
+- **Dados:** nenhum dado pessoal em código, teste, log ou fixture.
+
+## Base de homologação
+
+Período: 1º de agosto a 16 de outubro de 2026.
 
 | Área | Volume |
 |---|---|
@@ -53,7 +71,7 @@ benefy/
 | Empresas clientes | 150 |
 | Colaboradores com cartão | 6.104 |
 | Estabelecimentos | 953 |
-| Transações (ago a out/2026) | 155 mil |
+| Transações | 155 mil |
 | Lançamentos de extrato | 220 mil |
 | Tickets de atendimento | 3,9 mil |
 | Folha de pagamento | 11 meses |
