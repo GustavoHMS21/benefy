@@ -1,0 +1,26 @@
+# Entrega contínua em homologação: todo merge na develop gera as imagens e registra o deploy.
+# Fluxo completo em docs/empresa/08-fluxo-de-entrega.md.
+name: Homologação
+
+on:
+  push:
+    branches: [develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: homologacao
+  cancel-in-progress: false
+
+jobs:
+  deploy-homologacao:
+    name: deploy-homologacao
+    runs-on: ubuntu-latest
+    environment:
+      name: homologacao
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build das imagens dos serviços
+        run: bash .github/scripts/build_servicos.sh "homolog-${GITHUB_SHA::7}"

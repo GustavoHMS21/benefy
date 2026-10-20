@@ -29,7 +29,7 @@ A base de homologação usa dados sintéticos, mas segue a mesma classificação
 | Visão geral | [Sobre a Benefy](docs/empresa/01-sobre-a-benefy.md) |
 | Produto | [Produtos e regras de negócio](docs/empresa/02-produtos-e-regras.md) |
 | Pessoas | [Pessoas e squads](docs/empresa/03-pessoas-e-squads.md) |
-| Tecnologia | [Arquitetura](docs/empresa/04-arquitetura.md) · [Padrões de engenharia](docs/empresa/05-padroes-de-engenharia.md) |
+| Tecnologia | [Arquitetura](docs/empresa/04-arquitetura.md) · [Padrões de engenharia](docs/empresa/05-padroes-de-engenharia.md) · [Fluxo de entrega](docs/empresa/08-fluxo-de-entrega.md) |
 | Segurança | [Segurança e compliance](docs/empresa/06-seguranca-e-compliance.md) |
 | RH | [Manual do colaborador](docs/rh/manual-do-colaborador.md) · [Cargos e salários](docs/rh/cargos-e-salarios.md) · [Benefícios](docs/rh/beneficios-dos-funcionarios.md) |
 | Financeiro | [Visão financeira](docs/financeiro/visao-financeira.md) |
@@ -58,7 +58,7 @@ benefy/
 
 ## Como contribuir
 
-O fluxo completo está em [Padrões de engenharia](docs/empresa/05-padroes-de-engenharia.md). Em resumo:
+O fluxo completo está em [Padrões de engenharia](docs/empresa/05-padroes-de-engenharia.md) e [Fluxo de entrega](docs/empresa/08-fluxo-de-entrega.md). O backlog fica nas [issues](https://github.com/GustavoHMS21/benefy/issues), uma por história `BNF-xxx`. Em resumo:
 
 - **GitFlow:** `main` reflete produção e `develop` é a branch de integração. O trabalho sai de `feature/BNF-123-descricao-curta`. Não há push direto em `main` ou `develop`.
 - **Serviço novo:** sempre a partir do template, com `python tools/novo_servico.py <nome-do-servico>`.

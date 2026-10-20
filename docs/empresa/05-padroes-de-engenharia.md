@@ -16,6 +16,7 @@ Regras:
 - Ninguém faz push direto em `main` ou `develop`.
 - Todo PR precisa de pelo menos 1 aprovação humana.
 - **Agentes de IA nunca aprovam nem fazem merge de PR.** Eles podem abrir PRs e comentar.
+- Release, hotfix, versionamento e deploy seguem o [Fluxo de entrega](08-fluxo-de-entrega.md).
 
 ## Commits
 
