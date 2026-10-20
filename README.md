@@ -49,8 +49,10 @@ benefy/
 │   └── seed/           CSVs gerados localmente (não versionados)
 ├── tools/
 │   ├── seed/           gerador dos dados de homologação
-│   └── ci/             verificações usadas pelo pipeline
-├── services/           um diretório por serviço, com README, testes e pipeline
+│   ├── ci/             verificações usadas pelo pipeline
+│   └── novo_servico.py cria um serviço a partir do template
+├── templates/          template padrão de serviço Python
+├── services/           um diretório por serviço, com README e testes
 └── docker-compose.yml  Postgres e Adminer
 ```
 
@@ -59,6 +61,7 @@ benefy/
 O fluxo completo está em [Padrões de engenharia](docs/empresa/05-padroes-de-engenharia.md). Em resumo:
 
 - **GitFlow:** `main` reflete produção e `develop` é a branch de integração. O trabalho sai de `feature/BNF-123-descricao-curta`. Não há push direto em `main` ou `develop`.
+- **Serviço novo:** sempre a partir do template, com `python tools/novo_servico.py <nome-do-servico>`.
 - **Commits:** Conventional Commits com o ID da história, por exemplo `feat(saldo): debita carteira com fallback para saldo livre [BNF-104]`.
 - **Pull requests:** pelo menos uma aprovação humana. Agentes de IA podem abrir PRs e comentar, mas nunca aprovam nem fazem merge.
 - **Quality gate:** cobertura de código novo de pelo menos 80%, nenhum bug ou vulnerabilidade nova e SAST (Semgrep e Bandit) sem achados de severidade alta ou crítica.

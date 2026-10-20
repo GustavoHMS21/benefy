@@ -36,6 +36,7 @@ Tipos aceitos: `feat`, `fix`, `test`, `refactor`, `docs`, `chore`, `ci`.
 - Tipagem em todas as funções públicas.
 - Dinheiro sempre em centavos (`int`). Nunca `float`.
 - Regras de negócio ficam em `domain/`, isoladas da API. A API só traduz HTTP para chamadas do domínio.
+- Serviço novo nasce do [template padrão](../../templates/servico-python), com `python tools/novo_servico.py <nome-do-servico>`. O template já traz essa estrutura, os testes e a configuração do quality gate.
 
 ## Testes
 
