@@ -42,11 +42,14 @@ A base de homologação usa dados sintéticos, mas segue a mesma classificação
 
 ```
 benefy/
+├── .github/            CI (quality gate), templates de PR e issue, CODEOWNERS
 ├── docs/               documentação institucional, por área
 ├── database/
 │   ├── init/           schema, carga e índices do Postgres (executados na criação do container)
 │   └── seed/           CSVs gerados localmente (não versionados)
-├── tools/seed/         gerador dos dados de homologação
+├── tools/
+│   ├── seed/           gerador dos dados de homologação
+│   └── ci/             verificações usadas pelo pipeline
 ├── services/           um diretório por serviço, com README, testes e pipeline
 └── docker-compose.yml  Postgres e Adminer
 ```

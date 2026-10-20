@@ -1,0 +1,50 @@
+name: História
+description: Nova história para o backlog, no formato da Definition of Ready.
+title: "[BNF-xxx] "
+labels: ["tipo:historia", "status:new"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Não inclua CPF, nome completo, telefone, número de cartão ou dados de transação de colaborador. Dados **Restritos** não entram no backlog.
+  - type: dropdown
+    id: squad
+    attributes:
+      label: Squad
+      options:
+        - Carteira & Saldo
+        - Autorização
+        - Cartões
+        - Faturamento & Legado
+        - Portal RH
+        - App do Colaborador
+        - Antifraude
+        - Plataforma
+        - Plataforma de IA
+    validations:
+      required: true
+  - type: textarea
+    id: descricao
+    attributes:
+      label: Descrição
+      description: Como [quem], quero [o quê], para [por quê].
+      placeholder: Como colaborador, quero ..., para ...
+    validations:
+      required: true
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Critérios de aceite
+      description: Em Gherkin ou lista verificável.
+    validations:
+      required: true
+  - type: input
+    id: regras
+    attributes:
+      label: Regras de negócio afetadas
+      description: Referência em docs/empresa/02-produtos-e-regras.md (ex. R5, seção 3.2).
+  - type: textarea
+    id: duvidas
+    attributes:
+      label: Dúvidas abertas com o PO
+      description: História com dúvida aberta não entra na sprint.

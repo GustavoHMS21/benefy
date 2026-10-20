@@ -49,7 +49,7 @@ flowchart LR
 | SAST e SCA | Veracode |
 | IA no desenvolvimento | Claude Code e GitHub Copilot (uso hoje sem padrão) |
 
-> **Espelho no GitHub:** este repositório também é mantido no GitHub. Nele, o SAST usa Semgrep e Bandit, com os mesmos critérios de bloqueio do Veracode.
+> **Espelho no GitHub:** este repositório também é mantido no GitHub. Nele, o CI roda no GitHub Actions e o SAST usa Semgrep e Bandit, com os mesmos critérios de bloqueio do Veracode.
 
 ## Visão alvo (to-be, fim de 2027)
 

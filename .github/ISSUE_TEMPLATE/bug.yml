@@ -1,0 +1,44 @@
+name: Bug
+description: Comportamento incorreto em um serviço ou ferramenta.
+title: "[Bug] "
+labels: ["tipo:bug", "status:new"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Não cole logs, prints ou mensagens de cliente com CPF, nome, telefone ou número de cartão. Mascare antes (ex. `***.***.***-25`).
+  - type: input
+    id: servico
+    attributes:
+      label: Serviço
+      placeholder: saldo-service
+    validations:
+      required: true
+  - type: dropdown
+    id: severidade
+    attributes:
+      label: Severidade
+      options:
+        - CRITICA (autorização ou saldo incorretos em produção)
+        - ALTA
+        - MEDIA
+        - BAIXA
+    validations:
+      required: true
+  - type: textarea
+    id: atual
+    attributes:
+      label: Comportamento atual
+    validations:
+      required: true
+  - type: textarea
+    id: esperado
+    attributes:
+      label: Comportamento esperado
+      description: Cite a regra de negócio, se houver (ex. R5).
+    validations:
+      required: true
+  - type: textarea
+    id: passos
+    attributes:
+      label: Como reproduzir
