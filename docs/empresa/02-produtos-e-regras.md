@@ -1,8 +1,8 @@
 # Produtos e regras de negócio
 
-Este é o documento mais importante para os cases. Os testes BDD, as histórias do backlog e os agentes de IA usam estas regras como fonte da verdade.
+Fonte da verdade das regras de negócio do produto. Os testes BDD, as histórias do backlog e os agentes de IA usam este documento como referência.
 
-> Regras fictícias e simplificadas, inspiradas no PAT (Programa de Alimentação do Trabalhador) e na Lei 14.442/2022. Não use como referência jurídica.
+> Resumo operacional das regras, alinhado ao PAT (Programa de Alimentação do Trabalhador) e à Lei 14.442/2022. Não substitui o parecer do Jurídico.
 
 ## 1. Conceitos
 
@@ -115,7 +115,7 @@ MCCs bloqueados em **todas** as carteiras, inclusive no Saldo Livre:
 
 - Quando a empresa desliga um colaborador, o cartão continua ativo por **90 dias** para ele gastar o saldo restante.
 - Nesse período a empresa não pode fazer novos créditos para ele.
-- Depois de 90 dias o cartão é cancelado. O saldo que sobrar segue o contrato com a empresa cliente (fora do escopo dos cases).
+- Depois de 90 dias o cartão é cancelado. O saldo que sobrar segue o contrato com a empresa cliente (tratado pelo Jurídico e pelo Comercial, fora do escopo deste documento).
 
 ## 7. Dinheiro no código
 

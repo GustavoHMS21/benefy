@@ -1,0 +1,76 @@
+# Release e deploy em produção. Disparado pelo merge de release/* ou hotfix/* na main.
+# O deploy espera a aprovação do environment "producao".
+# Fluxo completo em docs/empresa/08-fluxo-de-entrega.md.
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  versionar:
+    name: versionar
+    runs-on: ubuntu-24.04
+    outputs:
+      versao: ${{ steps.versao.outputs.versao }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Definir versão pela branch de origem
+        id: versao
+        env:
+          MENSAGEM: ${{ github.event.head_commit.message }}
+        run: |
+          origem=$(printf '%s\n' "$MENSAGEM" | head -n 1 | grep -oE '(release|hotfix)/[^ ]+' || true)
+          ultima=$(git tag --list 'v*' --sort=-v:refname | head -n 1)
+          ultima=${ultima:-v0.0.0}
+
+          case "$origem" in
+            release/*)
+              versao="v${origem#release/}"
+              ;;
+            hotfix/*)
+              IFS=. read -r maior menor correcao <<< "${ultima#v}"
+              versao="v${maior}.${menor}.$((correcao + 1))"
+              ;;
+            *)
+              echo "::error::A main só recebe merge de release/* ou hotfix/*. Origem: '${origem:-desconhecida}'."
+              exit 1
+              ;;
+          esac
+
+          if ! [[ "$versao" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Versão inválida: ${versao}. Use release/<maior>.<menor>.<correcao>."
+            exit 1
+          fi
+          if git rev-parse -q --verify "refs/tags/${versao}" > /dev/null; then
+            echo "::error::A tag ${versao} já existe."
+            exit 1
+          fi
+
+          echo "versao=${versao}" >> "$GITHUB_OUTPUT"
+          echo "Versão: ${versao} (origem: ${origem})"
+      - name: Criar tag e release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSAO: ${{ steps.versao.outputs.versao }}
+        run: gh release create "$VERSAO" --target "$GITHUB_SHA" --title "$VERSAO" --generate-notes
+
+  deploy-producao:
+    name: deploy-producao
+    needs: versionar
+    runs-on: ubuntu-24.04
+    environment:
+      name: producao
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build das imagens dos serviços
+        run: bash .github/scripts/build_servicos.sh "${{ needs.versionar.outputs.versao }}"

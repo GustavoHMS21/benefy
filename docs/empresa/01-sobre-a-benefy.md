@@ -15,7 +15,7 @@ A Benefy dá às empresas um cartão único de benefícios para os colaboradores
 | 2023 | Série B. Abre o squad de Antifraude. Passa de 1.000 empresas clientes. |
 | 2024 | Migra o monolito para microsserviços na AWS (ainda em andamento). Adota Azure DevOps para boards, repos e pipelines. |
 | 2025 | Devs começam a usar Claude Code e GitHub Copilot por conta própria. Acontece o incidente INC-2025-031 (ver segurança e compliance). |
-| 2026 | Diretoria aprova o programa **Benefy AI SDLC** e cria o squad Plataforma de IA. Você é contratado. |
+| 2026 | Diretoria aprova o programa **Benefy AI SDLC** e cria o squad Plataforma de IA. |
 
 ## Números (out/2026)
 
@@ -35,7 +35,7 @@ A Benefy dá às empresas um cartão único de benefícios para os colaboradores
 - **Como a Benefy ganha dinheiro:** taxa cobrada dos estabelecimentos em cada transação (MDR), mensalidade por colaborador nos planos de multibenefícios e receita financeira do saldo parado.
 - **Concorrentes:** os grandes do mercado tradicional de vale e as fintechs de multibenefícios.
 
-## Clientes de referência (fictícios)
+## Clientes de referência
 
 | Empresa | Setor | Colaboradores | Particularidade |
 |---|---|---|---|

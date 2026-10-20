@@ -16,6 +16,7 @@ Regras:
 - Ninguém faz push direto em `main` ou `develop`.
 - Todo PR precisa de pelo menos 1 aprovação humana.
 - **Agentes de IA nunca aprovam nem fazem merge de PR.** Eles podem abrir PRs e comentar.
+- Release, hotfix, versionamento e deploy seguem o [Fluxo de entrega](08-fluxo-de-entrega.md).
 
 ## Commits
 
@@ -36,6 +37,7 @@ Tipos aceitos: `feat`, `fix`, `test`, `refactor`, `docs`, `chore`, `ci`.
 - Tipagem em todas as funções públicas.
 - Dinheiro sempre em centavos (`int`). Nunca `float`.
 - Regras de negócio ficam em `domain/`, isoladas da API. A API só traduz HTTP para chamadas do domínio.
+- Serviço novo nasce do [template padrão](../../templates/servico-python), com `python tools/novo_servico.py <nome-do-servico>`. O template já traz essa estrutura, os testes e a configuração do quality gate.
 
 ## Testes
 
@@ -57,6 +59,23 @@ O pipeline bloqueia o PR se qualquer item falhar:
 | Duplicação em código novo | até 3% |
 
 SAST (Veracode, no nosso caso Semgrep e Bandit): nenhuma vulnerabilidade de severidade **alta** ou **crítica**.
+
+### Pipeline de CI do repositório central
+
+O gate roda no GitHub Actions ([`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)) em todo PR contra `develop` e `main`. O check `quality-gate` é obrigatório para o merge.
+
+| Job | O que valida |
+|---|---|
+| `python (<projeto>)` | Para cada projeto em `services/` e `templates/`: `ruff check`, `ruff format --check`, `pytest` com cobertura mínima de 80% e `bandit` (severidade alta) |
+| `sast (semgrep)` | Regras `p/python` e `p/secrets` no repositório inteiro, bloqueando severidade alta |
+| `dados-pessoais` | CPF e número de cartão em arquivos versionados ([verificador](../../tools/ci/verificar_dados_pessoais.py)) |
+| `quality-gate` | Consolida os jobs acima. É o check exigido pela proteção de branch |
+
+## Pull requests e issues
+
+- Os PRs usam o [template](../../.github/pull_request_template.md), com a checklist da Definition of Done e a declaração de uso de IA, que alimenta as métricas do programa Benefy AI SDLC.
+- Histórias e bugs são abertos pelos formulários em `.github/ISSUE_TEMPLATE`. Issue em branco não é aceita.
+- Os revisores obrigatórios por caminho ficam em [`CODEOWNERS`](../../.github/CODEOWNERS).
 
 ## Definition of Ready (história pronta para entrar na sprint)
 

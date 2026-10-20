@@ -149,6 +149,6 @@ LEFT JOIN rh.funcionarios g ON g.id = f.gestor_id
 WHERE f.departamento_id = 2 AND f.status = 'ATIVO';
 ```
 
-## Aviso
+## Qualidade dos dados
 
-Como em qualquer empresa de verdade, esta base **não é perfeita**. Pode ter dado inconsistente, cadastro duplicado, informação sensível onde não devia e consulta lenta. Se encontrar algo estranho, avise o seu sênior.
+A base reproduz a produção, inclusive os problemas conhecidos de qualidade: dados inconsistentes, cadastros duplicados, dados pessoais em campos de texto livre e consultas sem índice adequado. Inconsistências encontradas devem ser registradas no backlog do squad dono da tabela.
