@@ -1,8 +1,6 @@
 # Pessoas e squads
 
-A lista completa de funcionários, cargos, gestores e squads está no banco, no schema `rh` (ver [banco de dados](../dados/banco-de-dados.md)). Este documento apresenta as pessoas com quem você mais vai falar.
-
-Você pode "conversar" com qualquer uma delas: peça ao Claude para responder como a pessoa (ex: "pergunta pra Bianca se o estorno parcial entra nessa sprint"). Cada uma tem prioridades diferentes, e às vezes elas discordam.
+A lista completa de funcionários, cargos, gestores e squads está no banco, no schema `rh` (ver [banco de dados](../dados/banco-de-dados.md)). Este documento apresenta a liderança e os principais stakeholders do programa Benefy AI SDLC.
 
 ## Organograma
 
@@ -14,7 +12,7 @@ CEO: Marina Okada
 │   │   ├── 2 Arquitetos de Software
 │   │   └── 8 squads de produto e plataforma
 │   ├── AI Orchestrator: Débora Lins
-│   │   └── Squad Plataforma de IA   <- você está aqui
+│   │   └── Squad Plataforma de IA
 │   └── Head de Dados: Tiago Moraes
 ├── Head de Produto: Juliana Ramos
 ├── CFO: Helena Prado
@@ -48,58 +46,58 @@ CEO: Marina Okada
 | Administrativo e Facilities | 6 | Camila Araújo Prado |
 | **Total** | **371** | |
 
-## Seu time: Plataforma de IA
+## Squad Plataforma de IA
 
-### Débora Lins: AI Orchestrator (sua gestora)
-- Lidera o programa Benefy AI SDLC. Entrou em mar/2026, vinda de uma consultoria grande.
-- **Quer:** ganhos medidos, não demos bonitas. Pergunta sempre "qual é o número?".
-- **Cuidado com:** propostas sem plano de rollout ou sem métrica de sucesso.
+### Débora Lins: AI Orchestrator
+- Lidera o programa Benefy AI SDLC desde mar/2026.
+- **Prioridades:** ganhos mensuráveis de produtividade e qualidade.
+- **Pontos de atenção:** toda proposta precisa de métrica de sucesso e plano de rollout.
 
-### André Matsuda: AI Engineer Sênior (seu sênior)
-- Está na Benefy desde 2024. Antes de existir o squad de IA, era dev no squad de Autorização, então conhece o core do produto.
-- É ele quem **passa as suas demandas**, revisa o seu código e destrava você quando ficar preso.
-- **Jeito de trabalhar:** passa a demanda com contexto, mas não com a solução. Espera que você faça perguntas antes de sair codando. Revisa PR com atenção e pede teste de tudo.
-- **Frase típica:** "Antes de abrir o editor, me explica com suas palavras o que você vai fazer."
+### André Matsuda: AI Engineer Sênior
+- Na Benefy desde 2024. Atuou no squad de Autorização e conhece o core do produto.
+- Responsável técnico do squad: distribui as demandas, revisa os PRs e define os padrões de implementação.
+- **Forma de trabalho:** as demandas chegam com contexto e critério de sucesso. O desenho da solução é discutido antes da implementação.
 
-## Pessoas-chave de outras áreas
+## Stakeholders
 
 ### Rafael Duarte: CTO
-- Cofundador. Programa até hoje nas horas vagas.
-- **Quer:** produtividade da engenharia dobrada até o fim de 2027. Gosta de IA e tem pressa.
-- **Cuidado com:** às vezes empurra para pular etapas de controle.
+- Cofundador.
+- **Prioridades:** dobrar a produtividade da engenharia até o fim de 2027.
+- **Pontos de atenção:** a pressão por velocidade não dispensa os controles de mudança (quality gate, CAB).
 
 ### Paulo Sampaio: Head de Engenharia
-- **Quer:** o mesmo padrão para todos os squads, mas com espaço para ajustes locais.
+- **Prioridades:** padrão único para todos os squads, com espaço para ajustes locais.
 
 ### Carla Nunes: CISO
 - Dona das regras do SonarQube e do Veracode.
-- **Quer:** nenhum agente com permissão de escrita em `main`, tudo auditável, nenhum segredo saindo do ambiente.
-- **Cuidado com:** bloqueou o uso livre de IA depois do incidente INC-2025-031. Se convence com controles, não com entusiasmo.
+- **Prioridades:** nenhum agente com permissão de escrita em `main`, execução auditável e nenhum segredo saindo do ambiente.
+- **Pontos de atenção:** restringiu o uso de IA após o INC-2025-031. Novas iniciativas precisam apresentar controles verificáveis.
 
 ### Otávio Reis: DPO
-- **Quer:** que nenhum CPF, nome ou dado de transação de colaborador vá para um modelo de IA externo sem base legal e sem mascaramento.
+- **Prioridades:** nenhum CPF, nome ou dado de transação de colaborador enviado a modelo de IA externo sem base legal e mascaramento.
 
 ### Bianca Teixeira: Product Owner do squad Carteira & Saldo
-- Conhece o negócio como ninguém, mas escreve histórias curtas e às vezes vagas.
-- **Quer:** estorno parcial e fallback funcionando bem antes da Black Friday.
-- **Cuidado com:** fica na defensiva se alguém "corrige" as histórias dela em público.
+- Referência em regras de negócio do produto.
+- **Prioridades:** estorno parcial e fallback estáveis antes da Black Friday.
+- **Pontos de atenção:** algumas histórias chegam sem critério de aceite completo. Ajustes devem ser alinhados com ela no refinamento.
 
 ### Lucas Ferreira: Tech Lead do squad Carteira & Saldo
-- Dev Python sênior, 8 anos de casa. Cético com IA ("já vi PR gerado por IA quebrar o extrato").
-- **Quer:** menos tempo em code review e testes que peguem bug de verdade.
+- Desenvolvedor Python sênior, 8 anos de casa.
+- **Prioridades:** menos tempo em code review e testes que detectem regressões reais.
+- **Pontos de atenção:** tem ressalvas com código gerado por IA, por histórico de regressões no extrato.
 
 ### Ana Beatriz Costa: Tech Lead do squad Cartões
-- Squad em Java/Spring Boot. Usa Copilot, não Claude Code.
-- **Quer:** que qualquer ferramenta de IA funcione para Java também.
+- Squad em Java/Spring Boot. Usa Copilot.
+- **Prioridades:** ferramentas de IA com suporte a Java.
 
 ### Helena Prado: CFO
-- **Quer:** saber quanto a IA custa por mês e por squad. Hoje ninguém sabe.
+- **Prioridades:** visibilidade do custo de IA por mês e por squad.
 
 ### Patrícia Lopes: Head de Atendimento e CS
-- **Quer:** menos tickets repetidos e respostas mais rápidas. O time dela sente primeiro quando algo quebra no produto.
+- **Prioridades:** menos tickets repetidos e respostas mais rápidas. O atendimento é a primeira área a sentir falhas do produto.
 
 ### Marcos Vieira: Gerente Comercial
-- Não é técnico, mas abre itens no Boards quando um cliente grande pede algo.
+- Abre itens no Boards quando um cliente estratégico solicita mudanças.
 
 ## Squads de engenharia
 
@@ -113,7 +111,7 @@ CEO: Marina Okada
 | App do Colaborador | Kotlin, Swift | apps móveis, `bff-app` | 17 |
 | Antifraude | Python | `motor-regras-fraude` | 9 |
 | Plataforma | Terraform, Python | infra AWS, templates de pipeline | 9 |
-| Plataforma de IA | Python | nenhum ainda | 3 |
+| Plataforma de IA | Python | em implantação | 3 |
 
 ## Cerimônias
 
@@ -122,4 +120,4 @@ CEO: Marina Okada
 - Refinamento na segunda-feira da segunda semana.
 - Review e retro na terça-feira de fim de sprint.
 - Change Advisory Board (CAB) para mudanças em produção que afetam autorização: quinta-feira.
-- 1:1 com a gestora a cada 2 semanas.
+- 1:1 com a liderança a cada 2 semanas.

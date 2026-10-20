@@ -20,7 +20,7 @@
 
 **Causa raiz:** não havia mascaramento de dados pessoais nos logs nem regra clara sobre o que pode ir para IA.
 
-**Por que isso importa para você:** a Plataforma de IA só vai ser liberada para todos os squads se a Carla (CISO) e o Otávio (DPO) aprovarem os controles. Pense nisso em qualquer código que você escrever (ex: nunca logar CPF).
+**Impacto no programa Benefy AI SDLC:** a Plataforma de IA só será liberada para todos os squads depois que a CISO (Carla Nunes) e o DPO (Otávio Reis) aprovarem os controles. Todo código do programa segue esse princípio (ex: nunca registrar CPF em log).
 
 O banco de homologação usa dados sintéticos, mas a regra é tratar como se fossem reais: CPF, nome e telefone continuam sendo dados **Restritos**.
 

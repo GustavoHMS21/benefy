@@ -1,36 +1,38 @@
-# Seu primeiro dia
+# Onboarding: squad Plataforma de IA
 
-**Cargo:** AI Engineer Júnior, squad Plataforma de IA
-**Gestora:** Débora Lins (AI Orchestrator)
-**Seu sênior:** André Matsuda (AI Engineer Sênior)
-**Início:** segunda-feira, 19 de outubro de 2026
+Guia da primeira semana para novos integrantes do squad Plataforma de IA.
 
-## Como o trabalho chega até você
+| Papel | Pessoa |
+|---|---|
+| Liderança do squad | Débora Lins (AI Orchestrator) |
+| Responsável técnico | André Matsuda (AI Engineer Sênior) |
 
-1. O André passa uma demanda (no chat, como seria no Slack ou no Boards).
-2. Você faz perguntas até entender o problema. Ele prefere pergunta a suposição.
-3. Você implementa numa branch, seguindo os [padrões de engenharia](../empresa/05-padroes-de-engenharia.md).
-4. Você abre o PR e pede revisão. Ele revisa e pede ajustes.
-5. Merge, e a próxima demanda.
+## Fluxo de trabalho
 
-As demandas podem ser de qualquer área: um serviço novo, uma análise no banco, uma automação, um agente de IA, um pipeline, um relatório para a CFO. Igual numa empresa de verdade.
+1. A demanda chega pelo Boards ou pelo canal do squad, com contexto e critério de sucesso.
+2. O desenho da solução é discutido com o responsável técnico antes da implementação. Dúvidas de negócio vão para o PO do squad dono da regra.
+3. A implementação acontece numa branch `feature/BNF-xxx-descricao`, seguindo os [padrões de engenharia](../empresa/05-padroes-de-engenharia.md).
+4. O PR é aberto contra a `develop` e passa por revisão humana e pelo quality gate.
+5. Depois da aprovação, o merge é feito e o item é fechado no Boards.
+
+Demandas do squad podem envolver serviços, análises de dados, automações, agentes de IA, pipelines e relatórios para outras áreas.
 
 ## Checklist da primeira semana
 
-- [ ] Ler a documentação da empresa em [docs/empresa](../empresa)
+- [ ] Ler a documentação em [docs/empresa](../empresa)
 - [ ] Ler o [manual do colaborador](../rh/manual-do-colaborador.md)
-- [ ] Subir o banco de homologação ([como fazer](../dados/banco-de-dados.md))
-- [ ] Rodar as consultas de exemplo e explorar as tabelas
-- [ ] Fazer o primeiro commit do repositório e criar a branch `develop`
-- [ ] Pedir a primeira demanda para o André
+- [ ] Concluir o treinamento obrigatório de LGPD e segurança
+- [ ] Configurar o git com nome e e-mail corporativos
+- [ ] Subir o banco de homologação ([instruções](../dados/banco-de-dados.md)) e executar as consultas de exemplo
+- [ ] Alinhar a primeira demanda com o responsável técnico
 
-## Seus acessos
+## Acessos
 
 | Ferramenta | Situação |
 |---|---|
-| Repositório da empresa | Este repositório |
+| Repositório central | Concedido no primeiro dia |
 | Banco de homologação | PostgreSQL local em Docker, porta 5433 |
 | Claude Code | Conta corporativa |
-| AWS | Conta de sandbox (pedir ao André quando uma demanda precisar) |
-| Azure DevOps | Organização de treino (pedir quando uma demanda precisar) |
-| Produção | Sem acesso. Ninguém do squad tem. |
+| AWS | Conta de sandbox, solicitada ao responsável técnico conforme a demanda |
+| Azure DevOps | Solicitado ao responsável técnico conforme a demanda |
+| Produção | Sem acesso para o squad |

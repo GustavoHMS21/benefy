@@ -35,7 +35,7 @@ A base de homologação usa dados sintéticos, mas segue a mesma classificação
 | Financeiro | [Visão financeira](docs/financeiro/visao-financeira.md) |
 | Atendimento | [Operação de atendimento](docs/atendimento/operacao-de-atendimento.md) |
 | Dados | [Banco de dados](docs/dados/banco-de-dados.md) |
-| Onboarding | [Primeiro dia](docs/onboarding/primeiro-dia.md) |
+| Onboarding | [Squad Plataforma de IA](docs/onboarding/primeiro-dia.md) |
 | Termos | [Glossário](docs/empresa/07-glossario.md) |
 
 ## Estrutura

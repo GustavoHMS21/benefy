@@ -49,7 +49,7 @@ flowchart LR
 | SAST e SCA | Veracode |
 | IA no desenvolvimento | Claude Code e GitHub Copilot (uso hoje sem padrão) |
 
-> **No seu ambiente:** você não tem acesso ao Azure da Benefy de verdade. Use o GitHub como "espelho" e uma organização gratuita do Azure DevOps quando a demanda pedir. Onde a Benefy usa Veracode, use Semgrep e Bandit, que fazem o mesmo papel (SAST).
+> **Espelho no GitHub:** este repositório também é mantido no GitHub. Nele, o SAST usa Semgrep e Bandit, com os mesmos critérios de bloqueio do Veracode.
 
 ## Visão alvo (to-be, fim de 2027)
 
@@ -62,7 +62,7 @@ flowchart LR
 
 O banco de homologação roda na sua máquina em Docker: um PostgreSQL com um schema por área da empresa e dados sintéticos de agosto a outubro de 2026. Como subir e o que tem em cada tabela: [banco de dados](../dados/banco-de-dados.md).
 
-O código dos serviços **não** está neste repositório. Quando uma demanda pedir um serviço, você cria o repositório dele em `services/`.
+Serviços novos ficam em `services/`, um diretório por serviço. O monolito e os serviços dos demais squads continuam nos repositórios de origem no Azure Repos.
 
 ## Como os dados fluem
 
