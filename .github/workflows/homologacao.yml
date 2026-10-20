@@ -17,10 +17,10 @@ concurrency:
 jobs:
   deploy-homologacao:
     name: deploy-homologacao
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment:
       name: homologacao
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Build das imagens dos serviços
         run: bash .github/scripts/build_servicos.sh "homolog-${GITHUB_SHA::7}"

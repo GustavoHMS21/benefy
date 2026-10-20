@@ -17,11 +17,11 @@ concurrency:
 jobs:
   versionar:
     name: versionar
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       versao: ${{ steps.versao.outputs.versao }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Definir versão pela branch de origem
@@ -67,10 +67,10 @@ jobs:
   deploy-producao:
     name: deploy-producao
     needs: versionar
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment:
       name: producao
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Build das imagens dos serviços
         run: bash .github/scripts/build_servicos.sh "${{ needs.versionar.outputs.versao }}"
