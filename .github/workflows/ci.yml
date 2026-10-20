@@ -19,11 +19,11 @@ concurrency:
 jobs:
   descobrir-projetos:
     name: descobrir-projetos
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       projetos: ${{ steps.listar.outputs.projetos }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Listar projetos Python (services/ e templates/)
         id: listar
         run: |
@@ -35,7 +35,7 @@ jobs:
     name: python (${{ matrix.projeto }})
     needs: descobrir-projetos
     if: needs.descobrir-projetos.outputs.projetos != '[]'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -44,8 +44,8 @@ jobs:
       run:
         working-directory: ${{ matrix.projeto }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
@@ -63,20 +63,20 @@ jobs:
 
   sast-semgrep:
     name: sast (semgrep)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     container:
       image: semgrep/semgrep:1.180.0
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Semgrep (python e segredos, severidade alta)
         run: semgrep scan --config p/python --config p/secrets --severity ERROR --error --metrics off
 
   dados-pessoais:
     name: dados-pessoais
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Procurar CPF e número de cartão em arquivos versionados
@@ -86,7 +86,7 @@ jobs:
     name: quality-gate
     if: always()
     needs: [descobrir-projetos, python, sast-semgrep, dados-pessoais]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Consolidar resultado
         env:
